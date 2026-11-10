@@ -28,7 +28,7 @@
   <ul>
     <li><strong>The master secret</strong>, inside your phone's secure hardware (the Android Keystore). It can't be exported, not even by the app, and it's used only after a fingerprint touch.</li>
     <li><strong>Your site list</strong>: for each entry, the site's domain, your login name, a version number, the password rules, a note if you add one, the master generation, and any apps you linked to it. None of it is a password.</li>
-    <li><strong>Trusted browsers</strong>: the package name and a fingerprint of the signing certificate of each browser you chose to trust for autofill.</li>
+    <li><strong>Trusted browsers and linked apps</strong>: the package name and a fingerprint of the signing certificate of each browser you chose to trust, and each app you linked to a site, for autofill.</li>
     <li><strong>App settings</strong>: your theme choice and the last few sites you used, for the "Recent" shortcuts. These never go into an export.</li>
   </ul>
   <p>All of this is kept in the app's private storage. No other app can read it, and the app turns off Android cloud backup for it.</p>
@@ -49,6 +49,8 @@
   <h2>Permissions</h2>
   <ul>
     <li><strong>Biometrics</strong>: to ask for your fingerprint before a password is made.</li>
+    <li><strong>Hide overlays</strong> (Android 12 and newer): so another app can't draw over Rekey's screens to trick a tap.</li>
+    <li><strong>Seeing installed apps</strong>: Rekey can see which apps with a launcher icon are installed. It uses this only to read the signing certificate of a browser you trust or an app you link, so a look-alike can't take its place. The list is never stored or sent.</li>
     <li>That's all. There is no internet, storage, contacts or location permission. Export and import use the system file picker, and the app opens only the file you choose.</li>
   </ul>
 

@@ -22,7 +22,7 @@ The phone stores only a list of sites, logins, versions and rules. None of it is
 
 - **Autofill that knows the site.** The page's domain is reduced to its registrable domain with a bundled public suffix list. Only a matching entry is offered, so a look-alike domain gets nothing.
 - **Trusted browsers only.** Any app can claim its fields belong to a website, so a web domain counts only from a browser you confirmed once. Its signing certificate is pinned.
-- **https only, one origin per fill.** Native apps match by package name, linked once.
+- **https only, one origin per fill.** Native apps are linked once and pinned to their signing certificate.
 - **Password changes** by raising a site's version; the previous one stays one touch away.
 - **Per-site rules**, **master generations** (move sites to a new master one at a time), **export/import**, and **restore from 12 words**.
 - **No internet permission**, screenshots blocked, passwords wiped from memory when you leave the screen, clipboard cleared after 30 s.

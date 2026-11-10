@@ -288,12 +288,12 @@ password = stream mapped onto the allowed characters with rejection sampling</di
       <li><span><b>No internet permission.</b> The app can't send anything anywhere, and the manifest proves it.</span></li>
       <li><span><b>The fingerprint is the lock, not the key.</b> Phones never give apps the fingerprint itself. It only releases the chip's key, and enrolling a new finger destroys that key.</span></li>
       <li><span><b>One chip operation per touch.</b> A fingerprint-bound key allows one use per touch. That one use makes a 32-byte site key, and software stretches it to the password's length.</span></li>
-      <li><span><b>Screens are secure.</b> Screenshots and the recent-apps preview are blocked; shown passwords are wiped from memory when you leave the screen.</span></li>
+      <li><span><b>Screens are secure.</b> Screenshots, the recent-apps preview and taps through another app's overlay are blocked; shown passwords are wiped from memory when you leave the screen.</span></li>
     </ul>
     <ul class="ticks">
       <li><span><b>Browsers must be trusted once.</b> Any app can claim its fields belong to a website. Rekey only believes a browser you confirmed, and pins its signing certificate.</span></li>
-      <li><span><b>https only, one origin per fill.</b> Plain http is refused, and a login inside an embedded frame can't receive the parent page's password.</span></li>
-      <li><span><b>Apps match by package.</b> A native app is linked to a site once; nothing is guessed from its name.</span></li>
+      <li><span><b>https only, one origin per fill.</b> Anything that isn't stated to be https is refused, and a login inside an embedded frame can't receive the parent page's password.</span></li>
+      <li><span><b>Apps are pinned too.</b> A native app is linked to a site once, with its signing certificate. An app that later takes its name is refused.</span></li>
       <li><span><b>The public suffix list is bundled.</b> <code>co.uk</code>-style domains are handled correctly, and the list is never downloaded at runtime.</span></li>
     </ul>
   </div>
