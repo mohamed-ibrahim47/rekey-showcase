@@ -119,6 +119,11 @@ ul.ticks { list-style: none; padding: 0; margin: 22px 0 0; display: grid; gap: 1
 ul.ticks li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: #D3E0E2; }
 ul.ticks li::before { content: "✓"; width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; font-size: 13px; font-weight: 800; background: rgba(79,216,196,.14); color: var(--te); margin-top: 1px; }
 ul.ticks b { color: #fff; }
+ul.ticks.warns li::before { content: "!"; background: rgba(255,170,80,.16); color: #FFB870; }
+.sub { color: #fff; font-size: 22px; margin: 44px 0 0; }
+.limits { margin-top: 44px; padding: 24px 26px; border: 1px solid rgba(255,170,80,.35); border-radius: 18px; background: rgba(255,170,80,.06); }
+.limits h3 { color: #FFB870; font-size: 22px; margin: 0; }
+.limits p { color: #D3E0E2; margin: 8px 0 0; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 @media (max-width: 900px) { .two { grid-template-columns: 1fr; } }
 
@@ -296,6 +301,38 @@ password = stream mapped onto the allowed characters with rejection sampling</di
       <li><span><b>Apps are pinned too.</b> A native app is linked to a site once, with its signing certificate. An app that later takes its name is refused.</span></li>
       <li><span><b>The public suffix list is bundled.</b> <code>co.uk</code>-style domains are handled correctly, and the list is never downloaded at runtime.</span></li>
     </ul>
+  </div>
+
+  <h3 class="sub">Hardened against other apps on your phone</h3>
+  <div class="two">
+    <ul class="ticks">
+      <li><span><b>Screen overlays.</b> If another app draws over Rekey, its buttons ignore the touch. On Android 12 and newer such overlays are hidden while Rekey is open.</span></li>
+      <li><span><b>Fake screens.</b> No other app can slip its own screen into Rekey's task and pose as Rekey.</span></li>
+      <li><span><b>App impersonation.</b> A linked app is tied to one entry and to the exact signature you confirmed. If the signature changes, filling stops until you link it again.</span></li>
+      <li><span><b>Imported lists.</b> App links that arrive in an imported file do nothing until you confirm each app on this phone.</span></li>
+    </ul>
+    <ul class="ticks">
+      <li><span><b>Plain http.</b> A page that doesn't state https gets no fill at all.</span></li>
+      <li><span><b>Clear prompts.</b> When an app asks for a password, the fingerprint prompt names that app.</span></li>
+      <li><span><b>Rule changes.</b> Changing a site's password rules raises its version, so two rule sets never share the same underlying password.</span></li>
+    </ul>
+  </div>
+
+  <div class="limits">
+    <h3>Warning: what Rekey can't protect against</h3>
+    <p>No app is safe on a phone that is already compromised. Know these limits before you rely on it.</p>
+    <div class="two">
+      <ul class="ticks warns">
+        <li><span><b>A rooted or malware-infected phone.</b> Software with full control of the phone can misuse a fingerprint touch.</span></li>
+        <li><span><b>A malicious keyboard or accessibility service.</b> It can read what is typed and shown, including your 12 words. Use only ones you trust.</span></li>
+        <li><span><b>A forced touch.</b> Someone who can make you touch the sensor can unlock a password.</span></li>
+      </ul>
+      <ul class="ticks warns">
+        <li><span><b>The clipboard on Android 9.</b> Other apps can read a copied password before it is cleared. Prefer autofill there.</span></li>
+        <li><span><b>A fake browser you choose to trust.</b> Rekey shows the browser's package and where it was installed from. Check them before you confirm.</span></li>
+        <li><span><b>Phones that can't hold the secret in the chip.</b> There the secret is decrypted in the app's memory for a moment at each use. Settings shows which mode your phone uses.</span></li>
+      </ul>
+    </div>
   </div>
 
   <div class="band">
