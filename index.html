@@ -120,7 +120,12 @@ ul.ticks li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; color: 
 ul.ticks li::before { content: "✓"; width: 24px; height: 24px; border-radius: 8px; display: grid; place-items: center; font-size: 13px; font-weight: 800; background: rgba(79,216,196,.14); color: var(--te); margin-top: 1px; }
 ul.ticks b { color: #fff; }
 ul.ticks.warns li::before { content: "!"; background: rgba(255,170,80,.16); color: #FFB870; }
-.sub { color: #fff; font-size: 22px; margin: 44px 0 0; }
+.shots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 30px; }
+.shots figure { margin: 0; }
+.shots img { width: 100%; height: auto; display: block; border-radius: 22px; border: 1px solid rgba(255,255,255,.12); box-shadow: 0 18px 50px rgba(0,0,0,.45); }
+.shots figcaption { color: #9FB2B6; font-size: 14px; text-align: center; margin-top: 12px; }
+@media (max-width: 900px) { .shots { grid-template-columns: 1fr 1fr; gap: 16px; } }
+.subhead { color: #fff; font-size: 22px; margin: 44px 0 0; }
 .limits { margin-top: 44px; padding: 24px 26px; border: 1px solid rgba(255,170,80,.35); border-radius: 18px; background: rgba(255,170,80,.06); }
 .limits h3 { color: #FFB870; font-size: 22px; margin: 0; }
 .limits p { color: #D3E0E2; margin: 8px 0 0; }
@@ -143,6 +148,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space
 <nav><div class="wrap">
   <a class="logo" href="#"><img src="icon.svg" alt="">Rekey</a>
   <div class="links">
+    <a href="#screens">Screens</a>
     <a href="#how">How it works</a>
     <a href="#different">What's different</a>
     <a href="#security">Security</a>
@@ -195,7 +201,19 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; justify-content: space
     </div></div>
   </div>
 </header>
-<p class="note" style="text-align:center">Screens are drawn for this page: the app blocks screenshots so a password can't leak into one.</p>
+<p class="note" style="text-align:center">The phones above are drawn for this page. The app's real screens are just below.</p>
+
+<section id="screens">
+  <span class="kicker">Real screens</span>
+  <h2>What it looks like.</h2>
+  <p class="sub">The app blocks screenshots on a phone so a password can't leak into one. These are its real screens, rendered from the same code with a made-up site list.</p>
+  <div class="shots">
+    <figure><img src="screenshots/1-home-dark.png" width="1080" height="2340" loading="lazy" alt="Site list with recent sites and the autofill status"><figcaption>Your sites, with autofill status</figcaption></figure>
+    <figure><img src="screenshots/2-site-dark.png" width="1080" height="2340" loading="lazy" alt="A site's screen with the fingerprint button"><figcaption>One touch shows the password</figcaption></figure>
+    <figure><img src="screenshots/4-add-dark.png" width="1080" height="2340" loading="lazy" alt="Adding a site"><figcaption>Adding a site</figcaption></figure>
+    <figure><img src="screenshots/3-rules-light.png" width="1080" height="2340" loading="lazy" alt="Per-site password rules in the light theme"><figcaption>Rules per site, light theme</figcaption></figure>
+  </div>
+</section>
 
 <section id="how">
   <span class="kicker">How it works</span>
@@ -303,7 +321,7 @@ password = stream mapped onto the allowed characters with rejection sampling</di
     </ul>
   </div>
 
-  <h3 class="sub">Hardened against other apps on your phone</h3>
+  <h3 class="subhead">Hardened against other apps on your phone</h3>
   <div class="two">
     <ul class="ticks">
       <li><span><b>Screen overlays.</b> If another app draws over Rekey, its buttons ignore the touch. On Android 12 and newer such overlays are hidden while Rekey is open.</span></li>
