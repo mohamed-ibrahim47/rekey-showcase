@@ -20,16 +20,16 @@
 <body>
 <main>
   <h1>Privacy Policy</h1>
-  <p class="muted">Rekey · Last updated 10 November 2026</p>
+  <p class="muted">Rekey · Last updated 16 November 2026</p>
 
   <p><strong>In short: Rekey has no account, no server and no internet permission. It stores no passwords. Nothing is ever sent to the developer or anyone else.</strong></p>
 
   <h2>What the app stores, and where</h2>
   <ul>
     <li><strong>The master secret</strong>, inside your phone's secure hardware (the Android Keystore). It can't be exported, not even by the app, and it's used only after a fingerprint touch.</li>
-    <li><strong>Your site list</strong>: for each entry, the site's domain, your login name, a version number, the password rules, a note if you add one, the master generation, and any apps you linked to it. None of it is a password.</li>
+    <li><strong>Your site list</strong>: for each entry, the site's domain, your login name, a version number, the password rules, a note if you add one, the master generation, any apps you linked to it, and the exact host if you limited autofill to one. None of it is a password.</li>
     <li><strong>Trusted browsers and linked apps</strong>: the package name and a fingerprint of the signing certificate of each browser you chose to trust, and each app you linked to a site, for autofill.</li>
-    <li><strong>App settings</strong>: your theme choice and the last few sites you used, for the "Recent" shortcuts. These never go into an export.</li>
+    <li><strong>App settings</strong>: your theme choice, whether the app lock is on, and the last few sites you used, for the "Recent" shortcuts. These never go into an export.</li>
   </ul>
   <p>All of this is kept in the app's private storage. No other app can read it, and the app turns off Android cloud backup for it.</p>
 
@@ -44,13 +44,14 @@
   <p>When you tap a login field, Android sends Rekey the structure of that screen: the web address the browser reports, or the name of the app, and which fields are the login and password. Rekey uses this only to find the matching entry, on the phone, at that moment. It doesn't keep it, except the app name when you choose to link an app to a site.</p>
 
   <h2>Clipboard</h2>
-  <p>Autofill is the normal way to fill a password. If you tap Copy instead, the password is put on the clipboard marked as sensitive and cleared after 30 seconds.</p>
+  <p>Autofill is the normal way to fill a password. If you tap Copy instead, the password is put on the clipboard marked as sensitive and cleared after 30 seconds. To do that after you have switched to another app, Rekey keeps a small service running for those 30 seconds. It shows a silent notification with a "Clear now" button, holds no password, and stops once the clipboard is cleared. Clearing removes whatever is on the clipboard at that moment. A keyboard that keeps its own clipboard history may still hold a copy, which Rekey can't reach.</p>
 
   <h2>Permissions</h2>
   <ul>
-    <li><strong>Biometrics</strong>: to ask for your fingerprint before a password is made.</li>
+    <li><strong>Biometrics</strong>: to ask for your fingerprint before a password is made, before a change to what autofill trusts, and for the optional app lock.</li>
     <li><strong>Hide overlays</strong> (Android 12 and newer): so another app can't draw over Rekey's screens to trick a tap.</li>
     <li><strong>Seeing installed apps</strong>: Rekey can see which apps with a launcher icon are installed. It uses this only to read the signing certificate of a browser you trust or an app you link, so a look-alike can't take its place. The list is never stored or sent.</li>
+    <li><strong>Foreground service</strong>: for the 30-second service that clears a copied password from the clipboard. It does nothing else.</li>
     <li>That's all. There is no internet, storage, contacts or location permission. Export and import use the system file picker, and the app opens only the file you choose.</li>
   </ul>
 
