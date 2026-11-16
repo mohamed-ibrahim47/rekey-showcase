@@ -34,6 +34,8 @@ The phone stores only a list of sites, logins, versions and rules. None of it is
 - **Autofill that knows the site.** The page's domain is reduced to its registrable domain with a bundled public suffix list. Only a matching entry is offered, so a look-alike domain gets nothing.
 - **Trusted browsers only.** Any app can claim its fields belong to a website, so a web domain counts only from a browser you confirmed once. Its signing certificate is pinned.
 - **https only, one origin per fill.** Native apps are linked once and pinned to their signing certificate.
+- **Exact host, if you want it.** An entry can be limited to one host, so the rest of that domain gets no suggestion.
+- **Optional app lock.** A fingerprint when Rekey opens, so the site list stays private on an unlocked phone.
 - **Password changes** by raising a site's version; the previous one stays one touch away.
 - **Per-site rules**, **master generations** (move sites to a new master one at a time), **export/import**, and **restore from 12 words**.
 - **No internet permission**, screenshots blocked, passwords wiped from memory when you leave the screen, clipboard cleared after 30 s.
@@ -46,6 +48,8 @@ The phone stores only a list of sites, logins, versions and rules. None of it is
 - **Imported lists.** App links that arrive in an imported file do nothing until you confirm each app on this phone.
 - **Plain http.** A page that doesn't state https gets no fill at all.
 - **Clear prompts.** When an app asks for a password, the fingerprint prompt names that app.
+- **Verified browsers.** Rekey knows the signing certificates of 59 well-known browsers. A copy with the right name and the wrong certificate is refused.
+- **Trust changes need a touch.** Trusting a browser, linking an app and importing a list each ask for a fingerprint.
 - **Rule changes.** Changing a site's password rules raises its version, so two rule sets never share the same underlying password.
 
 ## Check the APK
@@ -66,7 +70,7 @@ No app is safe on a phone that is already compromised. Know these limits before 
 - **A malicious keyboard or accessibility service.** It can read what is typed and shown, including your 12 words. Use only ones you trust.
 - **A forced touch.** Someone who can make you touch the sensor can unlock a password.
 - **The clipboard on Android 9.** Other apps can read a copied password before it is cleared. Prefer autofill there.
-- **A fake browser you choose to trust.** Rekey shows the browser's package and where it was installed from. Check them before you confirm.
+- **A fake browser you choose to trust.** Rekey checks well-known browsers by their signing certificate and warns about any other. For those, check the package and where it was installed from before you confirm.
 - **Phones that can't hold the secret in the chip.** There the secret is decrypted in the app's memory for a moment at each use. Settings shows which mode your phone uses.
 
 ## How it's built

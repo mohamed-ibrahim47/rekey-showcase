@@ -317,6 +317,8 @@ password = stream mapped onto the allowed characters with rejection sampling</di
       <li><span><b>Browsers must be trusted once.</b> Any app can claim its fields belong to a website. Rekey only believes a browser you confirmed, and pins its signing certificate.</span></li>
       <li><span><b>https only, one origin per fill.</b> Anything that isn't stated to be https is refused, and a login inside an embedded frame can't receive the parent page's password.</span></li>
       <li><span><b>Apps are pinned too.</b> A native app is linked to a site once, with its signing certificate. An app that later takes its name is refused.</span></li>
+      <li><span><b>Exact host, if you want it.</b> An entry can be limited to one host, so the rest of that domain gets no suggestion.</span></li>
+      <li><span><b>Optional app lock.</b> A fingerprint when Rekey opens, so the site list stays private on an unlocked phone.</span></li>
       <li><span><b>The public suffix list is bundled.</b> <code>co.uk</code>-style domains are handled correctly, and the list is never downloaded at runtime.</span></li>
     </ul>
   </div>
@@ -332,6 +334,8 @@ password = stream mapped onto the allowed characters with rejection sampling</di
     <ul class="ticks">
       <li><span><b>Plain http.</b> A page that doesn't state https gets no fill at all.</span></li>
       <li><span><b>Clear prompts.</b> When an app asks for a password, the fingerprint prompt names that app.</span></li>
+      <li><span><b>Verified browsers.</b> Rekey knows the signing certificates of 59 well-known browsers. A copy with the right name and the wrong certificate is refused.</span></li>
+      <li><span><b>Trust changes need a touch.</b> Trusting a browser, linking an app and importing a list each ask for a fingerprint.</span></li>
       <li><span><b>Rule changes.</b> Changing a site's password rules raises its version, so two rule sets never share the same underlying password.</span></li>
     </ul>
   </div>
@@ -349,7 +353,7 @@ password = stream mapped onto the allowed characters with rejection sampling</di
       </ul>
       <ul class="ticks warns">
         <li><span><b>The clipboard on Android 9.</b> Other apps can read a copied password before it is cleared. Prefer autofill there.</span></li>
-        <li><span><b>A fake browser you choose to trust.</b> Rekey shows the browser's package and where it was installed from. Check them before you confirm.</span></li>
+        <li><span><b>A fake browser you choose to trust.</b> Rekey checks well-known browsers by their signing certificate and warns about any other. For those, check the package and where it was installed from before you confirm.</span></li>
         <li><span><b>Phones that can't hold the secret in the chip.</b> There the secret is decrypted in the app's memory for a moment at each use. Settings shows which mode your phone uses.</span></li>
       </ul>
     </div>
