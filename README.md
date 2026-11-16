@@ -48,6 +48,16 @@ The phone stores only a list of sites, logins, versions and rules. None of it is
 - **Clear prompts.** When an app asks for a password, the fingerprint prompt names that app.
 - **Rule changes.** Changing a site's password rules raises its version, so two rule sets never share the same underlying password.
 
+## Check the APK
+
+Every genuine Rekey release is signed with the certificate whose SHA-256 is:
+
+```
+AC:18:AE:ED:F6:23:AD:39:E6:FF:0A:EA:92:4F:7D:7E:21:4A:B8:3E:B6:B7:97:9F:AA:37:E6:E4:D0:6E:EC:44
+```
+
+Run `apksigner verify --print-certs Rekey.apk` and compare. A copy signed with any other certificate is not Rekey.
+
 ## Warning: what Rekey can't protect against
 
 No app is safe on a phone that is already compromised. Know these limits before you rely on it.
